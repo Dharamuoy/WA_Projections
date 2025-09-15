@@ -240,7 +240,7 @@ gunamaGurad <- function(ageTab, startYear = 2024, endYear = 2100, meanFrequency 
   # 4. Load the inputs
   parallel::clusterExport(cl, varlist=c('startYear', 'endYear', 'meanFrequency', 'frequencyTab', 'reps',
                                         'trendForm', 'constants', 'domain', 'SEtrendForm', 'SEconstants',
-                                        'annualBurn', 'suppression', 'burnYear', 'PBDuration'), environment())
+                                        'annualBurn', 'suppression', 'burnYear', 'PBDuration', "gunama"), environment())
   
   cat("Projecting fire likelihood for the years", startYear, "to", endYear, "for", length(annualBurn), "management scenarios.", "\n")
   parT <- parallel::parLapply(cl, startAges, gunamaMudi)
@@ -409,4 +409,5 @@ gunama <- function(startAge = 15, startYear = 2024, endYear = 2100,
     Treatment <- Treatment + 1
   }
   return(fireDetail)
+
 }
